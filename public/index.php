@@ -16,7 +16,7 @@ $missoes = [
     ["id" => 7, "nome" => "Juno", "ano" => 2011, "agencia" => "NASA", "status" => "Em andamento"],
     ["id" => 8, "nome" => "Perseverance", "ano" => 2020, "agencia" => "NASA", "status" => "Em andamento"]
 ];
-
+// sistema para verificar se a publicação local do site está funcionando corretamente
 $app->get('/status', function ($request, $response) {
     $response->getBody()->write(json_encode(['status' => 'ok']));
     return $response->withHeader('Content-Type', 'application/json')->withStatus(200);
@@ -34,7 +34,7 @@ $app->get('/missoes/{id}', function ($request, $response, $args) use (&$missoes)
     if (!$missao) {
         $response->getBody()->write(
             json_encode([
-                'erro' => 'missao nao encontrado'
+                'erro' => 'missao nao encontrada' 
             ])
         );
         return $response
